@@ -41,14 +41,23 @@ void vvod(int **&a, int &n, int &m)                                             
 	}
 	else
 	{
-		
+		for (int i = 0; i < n; i++)
+			for(int f =0; f<m;f++)
+		{
+			a[i][f] = (rand() % 1000 + 1);            //заполнение массива случайными числами
+		}
 	}
 	cout << "Готово\n";
 }
 
 void obrab(int m, int &ob)                                                      //функция обработки массива
-{	
-	cout << "Готово\n";
+{
+	ob = 1;
+	if (m == 0) cout << "Ошибка! Сначала задайте значение массива\n";
+	else
+	{
+		cout << "Готово\n";
+	}
 }
 
 void vyvod(int **&a,int n, int m, int ob)                                       //вывод массива на экран
@@ -61,7 +70,7 @@ void vyvod(int **&a,int n, int m, int ob)                                       
 			for (int i = 0; i < n; i++)
 			{
 				for (int j = 0; j < m; j++)
-					cout << a[i][j] << " ";
+					cout << a[i][j] << " ";                     //Ошибка!!!!
 				cout << "\n";
 			}
 			cout << "\n";
@@ -71,7 +80,7 @@ void vyvod(int **&a,int n, int m, int ob)                                       
 			for (int i = 0; i < m; i++)
 			{
 				for (int j = 0; j < n; j++)
-					cout << a[j][i] << " ";
+					cout << a[j][i] << " ";                     //Ошибка!!!!
 				cout << "\n";
 			}
 			cout << "\n";
@@ -110,6 +119,12 @@ int main()                                                      //тело программы
 			}
 		}
 	} while (f != 0);
+	if (a != NULL)
+	{
+		for (int i = 0; i < n; i++)
+			delete[] a[i];
+		delete[] a;
+	}
 	return 0;
 }
 
